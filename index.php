@@ -127,7 +127,7 @@ if (isset($_GET['parking']) || isset($_GET['rating'])) {
 
             <h2 class="text-center mb-4">Available Hotels</h2>
             <!-- Tabella -->
-            <table class="table">
+            <table class="table text-center">
                 <thead>
                     <tr>
                         <th scope="col"></th>
@@ -135,7 +135,7 @@ if (isset($_GET['parking']) || isset($_GET['rating'])) {
                         <?php if (!empty($filtered_hotels)) : ?>
                             <!-- Ciclo sull'array multidimensionale in posizione 0 per prendere tutte le chiavi dell'array associativo -->
                             <?php foreach (array_keys($filtered_hotels[0]) as $key) : ?>
-                                <th scope="col"><?php echo $key; ?></th>
+                                <th scope="col"><?php echo ucwords(str_replace('_', ' ', $key)); ?></th>
                             <?php endforeach ?>
                         <?php endif; ?>
                     </tr>
