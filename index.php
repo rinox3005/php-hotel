@@ -65,7 +65,7 @@ if (isset($_GET['parking']) || isset($_GET['rating'])) {
 
         // Filtro per rating
         if (!is_null($rating_filter)) {
-            if ($hotel['vote'] != $rating_filter) {
+            if ($hotel['vote'] < $rating_filter) {
                 $include_hotel = false;
             }
         }
