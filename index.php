@@ -118,17 +118,7 @@ if (isset($_GET['parking'])) {
 
                                 <!-- Stampo i value del ciclo e nel caso in cui il valore sia booleano rappresento yes or no invece di 1 o null -->
                                 <td>
-                                    <?php
-                                    if (is_bool($value)) {
-                                        if ($value == true) {
-                                            echo 'Yes';
-                                        } else {
-                                            echo 'No';
-                                        }
-                                    } else {
-                                        echo $value;
-                                    }
-                                    ?>
+                                    <?php echo is_bool($value) ? ($value ? 'Yes' : 'No') : $value; ?>
                                 </td>
                             <?php endforeach ?>
                         </tr>
