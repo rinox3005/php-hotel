@@ -1,5 +1,6 @@
 <?php
 
+// array multidimensionale di hotel con indici numerici che contiene array associativi
 $hotels = [
 
     [
@@ -39,3 +40,37 @@ $hotels = [
     ],
 
 ];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Hotels</title>
+</head>
+
+<body>
+    <main>
+        <?php foreach ($hotels as $hotel) {
+            foreach ($hotel as $key => $value) {
+                echo "$key - ";
+                if (is_bool($value)) {
+                    if ($value == true) {
+                        echo "Yes";
+                    } else {
+                        echo "No";
+                    }
+                } else {
+                    echo $value;
+                }
+                echo '<br>';
+            }
+            echo '<hr>';
+        }
+        ?>
+    </main>
+</body>
+
+</html>
