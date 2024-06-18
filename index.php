@@ -80,12 +80,23 @@ if (isset($_GET['parking'])) {
             <!-- Select per i filtri -->
             <form action="index.php" method="GET">
                 <div class="row justify-content-center mb-3">
-                    <div class="col-6">
+                    <div class="col-lg-2 col-md-3 col-4">
                         <!-- Select per il filtro parcheggio -->
                         <select class="form-select" aria-label="Default select example" name="parking">
                             <option selected disabled>Parking</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <!-- Select per il filtro stelle -->
+                        <select class="form-select" aria-label="Default select example" name="rating">
+                            <option selected disabled>Rating</option>
+                            <option value="1">1 Star</option>
+                            <option value="2">2 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="5">5 Stars</option>
                         </select>
                     </div>
                 </div>
