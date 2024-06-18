@@ -49,67 +49,56 @@ $hotels = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Hotels</title>
-    <!-- Bootsrap -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
     <main>
-        <?php foreach ($hotels as $hotel) ?>
         <section class="container mt-5">
             <h1 class="text-center mb-5">PHP Hotels</h1>
+            <!-- Tabella -->
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col"></th>
-                        <?php foreach ($hotel as $key => $value) : ?>
-                            <th scope="col"><?php echo $key ?></th>
+                        <!-- Ciclo sull'array multidimensionale in posizione 0 per prendere tutte le chiavi dell'array associativo -->
+                        <?php foreach ($hotels[0] as $key => $value) : ?>
+                            <th scope="col"><?php echo $key; ?></th>
                         <?php endforeach ?>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <?php foreach ($hotel as $key => $value) : ?>
-                            <td scope="col"><?php echo $value ?></td>
-                        <?php endforeach ?>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                    </tr>
+                    <!-- Ciclo sull'array multidimensionale prendendo anche l'index per calcolare il numero della row dinamicamente -->
+                    <?php foreach ($hotels as $index => $hotel) : ?>
+                        <tr>
+                            <!-- Rappresento dinamicamente il numero della row e lo incremento ad ogni ciclo -->
+                            <th scope="row"><?php echo $index + 1; ?></th>
+
+                            <!-- Ciclo su ogni array associativo e prendo chiavi e valori -->
+                            <?php foreach ($hotel as $key => $value) : ?>
+
+                                <!-- Stampo i value del ciclo e nel caso in cui il valore sia booleano rappresento yes or no invece di 1 o null -->
+                                <td>
+                                    <?php
+                                    if (is_bool($value)) {
+                                        if ($value == true) {
+                                            echo 'Yes';
+                                        } else {
+                                            echo 'No';
+                                        }
+                                        // per qualunque altro valore diverso da booleano stampo il valore stesso
+                                    } else {
+                                        echo $value;
+                                    }
+                                    ?>
+                                </td>
+                            <?php endforeach ?>
+                        </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </section>
-
     </main>
 </body>
 
