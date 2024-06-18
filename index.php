@@ -100,10 +100,13 @@ if (isset($_GET['parking'])) {
                 <thead>
                     <tr>
                         <th scope="col"></th>
-                        <!-- Ciclo sull'array multidimensionale in posizione 0 per prendere tutte le chiavi dell'array associativo -->
-                        <?php foreach ($filtered_hotels[0] as $key => $value) : ?>
-                            <th scope="col"><?php echo $key; ?></th>
-                        <?php endforeach ?>
+                        <!-- Mi assicuro che l'array non sia vuoto prima di ciclare -->
+                        <?php if (!empty($filtered_hotels)) : ?>
+                            <!-- Ciclo sull'array multidimensionale in posizione 0 per prendere tutte le chiavi dell'array associativo -->
+                            <?php foreach (array_keys($filtered_hotels[0]) as $key) : ?>
+                                <th scope="col"><?php echo $key; ?></th>
+                            <?php endforeach ?>
+                        <?php endif; ?>
                     </tr>
                 </thead>
                 <tbody>
