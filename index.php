@@ -45,18 +45,9 @@ $filtered_hotels = [];
 // Verifico se è stato inviato il form con i filtri
 if (isset($_GET['parking']) || isset($_GET['rating'])) {
 
-    // Recupera i valori dei filtri
-    if (isset($_GET['parking'])) {
-        $parking_filter = $_GET['parking'];
-    } else {
-        $parking_filter = null;
-    }
-
-    if (isset($_GET['rating'])) {
-        $rating_filter = $_GET['rating'];
-    } else {
-        $rating_filter = null;
-    }
+    // Recupero i valori dei filtri
+    $parking_filter = isset($_GET['parking']) ? $_GET['parking'] : null;
+    $rating_filter = isset($_GET['rating']) ? $_GET['rating'] : null;
 
     // Ciclo sull'array di hotel per applicare i filtri
     foreach ($hotels as $hotel) {
@@ -128,6 +119,7 @@ if (isset($_GET['parking']) || isset($_GET['rating'])) {
                         </select>
                     </div>
                 </div>
+                <!-- Bottone per inviare il form -->
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary mb-5">Submit</button>
                 </div>
