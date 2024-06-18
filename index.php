@@ -158,11 +158,7 @@ if (isset($_GET['parking']) || isset($_GET['rating'])) {
                                     if ($key == 'distance_to_center') {
                                         echo $value . ' km';
                                     } elseif ($key == 'vote') {
-                                        if ($value == 1) {
-                                            echo $value . ' star';
-                                        } else {
-                                            echo $value . ' stars';
-                                        }
+                                        echo $value . ($value == 1 ? ' star' : ' stars');
                                     } else {
                                         echo is_bool($value) ? ($value ? 'Yes' : 'No') : $value;
                                     }
