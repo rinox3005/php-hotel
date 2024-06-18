@@ -154,7 +154,19 @@ if (isset($_GET['parking']) || isset($_GET['rating'])) {
 
                                 <!-- Stampo i value del ciclo e nel caso in cui il valore sia booleano rappresento yes or no invece di 1 o null -->
                                 <td width="21%">
-                                    <?php echo is_bool($value) ? ($value ? 'Yes' : 'No') : $value; ?>
+                                    <?php
+                                    if ($key == 'distance_to_center') {
+                                        echo $value . ' km';
+                                    } elseif ($key == 'vote') {
+                                        if ($value == 1) {
+                                            echo $value . ' star';
+                                        } else {
+                                            echo $value . ' stars';
+                                        }
+                                    } else {
+                                        echo is_bool($value) ? ($value ? 'Yes' : 'No') : $value;
+                                    }
+                                    ?>
                                 </td>
                             <?php endforeach ?>
                         </tr>
