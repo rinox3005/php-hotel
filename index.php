@@ -4,35 +4,35 @@
 $hotels = [
     [
         'name' => 'Hotel Belvedere',
-        'description' => 'Hotel Belvedere Descrizione',
+        'description' => 'Situato sulla splendida costa amalfitana, l\'Hotel Belvedere offre viste mozzafiato sul mare, camere eleganti e un servizio impeccabile.',
         'parking' => true,
         'vote' => 4,
         'distance_to_center' => 10.4
     ],
     [
         'name' => 'Hotel Futuro',
-        'description' => 'Hotel Futuro Descrizione',
+        'description' => 'Nel cuore di Firenze, questo hotel di lusso combina l\'eleganza storica con comfort moderni.',
         'parking' => true,
         'vote' => 2,
         'distance_to_center' => 2
     ],
     [
         'name' => 'Hotel Rivamare',
-        'description' => 'Hotel Rivamare Descrizione',
+        'description' => 'Immerso nelle Dolomiti, questo resort è perfetto per gli amanti della montagna.',
         'parking' => false,
         'vote' => 1,
         'distance_to_center' => 1
     ],
     [
         'name' => 'Hotel Bellavista',
-        'description' => 'Hotel Bellavista Descrizione',
+        'description' => 'Situato nel vibrante quartiere di Brera, questo hotel boutique offre design contemporaneo, camere eleganti e un\'atmosfera intima.',
         'parking' => false,
         'vote' => 5,
         'distance_to_center' => 5.5
     ],
     [
         'name' => 'Hotel Milano',
-        'description' => 'Hotel Milano Descrizione',
+        'description' => 'Un\'oasi di tranquillità nella campagna toscana, questo resort offre suite lussuose, una spa completa di trattamenti benessere, e un ristorante che serve piatti tipici della cucina regionale preparati con ingredienti locali.',
         'parking' => true,
         'vote' => 2,
         'distance_to_center' => 50
@@ -90,12 +90,14 @@ if (isset($_GET['parking']) || isset($_GET['rating'])) {
     <title>PHP Hotels</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Stylesheet CSS -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <main>
         <section class="container mt-5">
-            <h1 class="text-center mb-5">PHP Hotels</h1>
+            <h1 class="text-center mb-5 display-3 fw-bold text-primary">PHP Hotels</h1>
             <!-- Select per i filtri -->
             <form action="index.php" method="GET">
                 <div class="row justify-content-center mb-3">
@@ -125,9 +127,9 @@ if (isset($_GET['parking']) || isset($_GET['rating'])) {
                 </div>
             </form>
 
-            <h2 class="text-center mb-4">Available Hotels</h2>
+            <h2 class="text-center mb-4 fw-bold text-primary">Available Hotels</h2>
             <!-- Tabella -->
-            <table class="table text-center">
+            <table class="table table-striped table-bordered text-center mb-5">
                 <thead>
                     <tr>
                         <th scope="col"></th>
@@ -151,7 +153,7 @@ if (isset($_GET['parking']) || isset($_GET['rating'])) {
                             <?php foreach ($hotel as $key => $value) : ?>
 
                                 <!-- Stampo i value del ciclo e nel caso in cui il valore sia booleano rappresento yes or no invece di 1 o null -->
-                                <td>
+                                <td width="21%">
                                     <?php echo is_bool($value) ? ($value ? 'Yes' : 'No') : $value; ?>
                                 </td>
                             <?php endforeach ?>

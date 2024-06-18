@@ -1,0 +1,42 @@
+/* RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(https://img.nh-hotels.net/9E9kyO/Dn6naX/original/Avani_Frankfurt_City_Hotel_Guest_Room_Deluxe_Room_with_Terrace.jpg?output-quality=80&resize=1600:*&background-color=white);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(26, 25, 53, 0.24);
+  z-index: -1;
+}
+
+tbody:hover {
+  cursor: pointer;
+}
+
+h1,
+h2 {
+  text-shadow: 5px 0px 5px rgba(255, 255, 255, 1);
+}
+
+td,
+th {
+  vertical-align: middle;
+}
+
+th {
+  font-size: 18px;
+}
