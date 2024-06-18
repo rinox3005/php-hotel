@@ -39,25 +39,53 @@ $hotels = [
     ],
 ];
 
-// Filtro gli hotel in base al parcheggio
+// Filtro gli hotel in base al parcheggio e al rating
 $filtered_hotels = [];
 
-// utilizzo isset per verificare se il valore sella select non é nullo, se é settato entro nell'if
-if (isset($_GET['parking'])) {
+// Verifico se è stato inviato il form con i filtri
+if (isset($_GET['parking']) || isset($_GET['rating'])) {
 
-    // assegno il valore che passo in get ad una variabile
-    $parking_filter = $_GET['parking'];
+    // Recupera i valori dei filtri
+    if (isset($_GET['parking'])) {
+        $parking_filter = $_GET['parking'];
+    } else {
+        $parking_filter = null;
+    }
 
-    // ciclo sull'array multidimensionale e filtro gli hotel in base al valore di $parking_filter che passo in get dalla select
+    if (isset($_GET['rating'])) {
+        $rating_filter = $_GET['rating'];
+    } else {
+        $rating_filter = null;
+    }
+
+    // Ciclo sull'array di hotel per applicare i filtri
     foreach ($hotels as $hotel) {
-        if ($parking_filter == 'yes' && $hotel['parking'] == true) {
-            $filtered_hotels[] = $hotel;
-        } elseif ($parking_filter == 'no' && $hotel['parking'] == false) {
+        $include_hotel = true;
+
+        // Filtro per parcheggio
+        if (!is_null($parking_filter)) {
+            if ($parking_filter == 'yes' && $hotel['parking'] == false) {
+                $include_hotel = false;
+            }
+            if ($parking_filter == 'no' && $hotel['parking'] == true) {
+                $include_hotel = false;
+            }
+        }
+
+        // Filtro per rating
+        if (!is_null($rating_filter)) {
+            if ($hotel['vote'] != $rating_filter) {
+                $include_hotel = false;
+            }
+        }
+
+        // Se l'hotel soddisfa tutti i filtri, lo aggiungo agli hotel filtrati
+        if ($include_hotel) {
             $filtered_hotels[] = $hotel;
         }
     }
-    // se non seleziono nulla l'array da utilizzare é quello di partenza
 } else {
+    // Se non ci sono filtri applicati, mostro tutti gli hotel
     $filtered_hotels = $hotels;
 }
 ?>
